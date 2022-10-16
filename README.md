@@ -5,6 +5,8 @@ Welcome to Pesto assignments.
 
 ## How to solve assignments
 
+
+
 Weekly Assignments will be shared by your mentor or instructor.
 
 Make sure master or main branch is protected and you are not able to push any code directly to master.
