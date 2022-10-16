@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script>
+
+const memoizedAdd = () => {
+  let cache = {};
+  return (n) => {
+    if (n in cache) {
+      console.log('Fetching from cache');
+      return cache[n];
+    }
+    else {
+      console.log('Calculating result');
+      let result = n + 10;
+      cache[n] = result;
+      return result;
+    }
+  }
+}
+// returned function from memoizedAdd
+const newAdd = memoizedAdd();
+console.log(newAdd(100,200)); // calculated
+console.log(newAdd(120,220)); 
+console.log(newAdd(100,200)); // cache
+
+
+</script>
+
+
+
+
+
+</head>
+<body>
+
+</body>
+</html>
