@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3.4</title>
+</head>
+
+<body>
+    <script>
+
+        function createStack() {
+            const items = [];
+
+            return {
+                push(item) {
+                    items.push(item);
+                },
+
+                pop() {
+                    return items.pop();
+                }
+            };
+        }
+        const stack = createStack();
+        stack.push(10);
+        stack.push(5);
+        stack.pop();//5
+        stack.items;// => undefined
+        console.log(stack.items)
+        //Items is now a private variable and stack is encapsulated 
+        //methods are public and only push and pop
+        //push and pop being closures,capture items from
+        //createStack() function
+    </script>
+
+</body>
+
+</html>

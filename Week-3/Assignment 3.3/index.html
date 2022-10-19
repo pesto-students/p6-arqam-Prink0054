@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3.3</title>
+</head>
+
+<body>
+
+    <script>
+        function createIncrement() {
+            let count = 0;
+            function increment() {
+                count++;
+            }
+            let message = `Count is${count}`;
+            function log() {
+                { console.log(message); }
+
+                return [increment, log];
+            }
+            const [increment, log] = createIncrement();
+            increment();
+            increment();
+            increment();
+            log();// What is logged?
+            //Answer
+            //'Count is 0' is written to the console.
+            //Variable message exists within the function createIncrement( 
+            //Its initial value 'Count is 0'… However, even if the variable count
+            // has been increased several times, the variable message always matters 'Count is 0'
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

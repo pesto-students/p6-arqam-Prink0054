@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3.2</title>
+</head>
+<body>
+    
+<script>
+//Call method
+//The call() method invokes a function with a specified context.
+// In other words, you can tie a function into an object as if it belonged to the object.
+
+
+var obj = { num: 2 };
+function add(a){
+  return this.num + a;
+}
+console.log(add.call(obj, 3))
+
+//Apply method
+//The apply() method does the exact same as call(). 
+//The difference is that call() accepts an argument list,
+// but apply() accepts an array of arguments.
+
+var obj1 = { num: 2 };
+function add(a){
+  return this.num + a;
+}
+console.log(add.apply(obj1,[2]))
+
+//Bind
+//The bind() method is reminiscent of call() and apply(). 
+//But instead of executing a function immediately
+//bind() returns a function that can be executed later on.
+
+
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
+
+let fullName = person.fullName.bind(member);
+console.log(fullName())
+
+</script>
+
+</body>
+</html>
