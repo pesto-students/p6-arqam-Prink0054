@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4.1</title>
+</head>
+
+<body>
+    <script>
+
+
+        const PENDING = 0;
+        const FULLFILLED = 1;
+        const REJECTED = 2;
+
+        function customPromise(excecutor) {
+
+            let state = PENDING;
+            let value = null;
+            let handlers = [];
+            let catchers = [];
+
+            function resolve(result) {
+                if (state !== PENDING) return;
+
+                state = FULLFILLED;
+                value = result;
+                handlers.forEach((h) => h(value))
+
+            }
+
+            function reject(err) {
+                if (state !== PENDING) return;
+
+                state = REJECTED;
+                value = err;
+                catchers.forEach((e) => e(value))
+            }
+
+            this.then = function (SuccessCallback) {
+                if (state === FULLFILLED) {
+                    SuccessCallback(value)
+                }
+                else {
+                    handlers.push(SuccessCallback);
+                }
+            }
+
+
+            this.catch = function (failureCallback) {
+                if (state === REJECTED) {
+                    failureCallback(value)
+                }
+                else {
+                    catchers.push(failureCallback);
+                }
+            }
+
+            excecutor(resolve, reject);
+
+        }
+
+        const getNumber = (res, rej) => {
+            const randomNumber = parseInt(Math.random() * 100, 10);
+
+            if (randomNumber % 5 === 0) {
+                setTimeout(() => { rej('Promise Rejected') }, 1000);
+
+
+            }
+            else {
+                setTimeout(() => { res('Promise Resolved') }, 1000);
+            }
+        }
+
+        let greetMsg = new customPromise(getNumber)
+
+
+        greetMsg.then((value) => {
+            console.log("Then Log " + value)
+        })
+
+        greetMsg.catch((val) => {
+            console.log("Catch log " + val)
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>
