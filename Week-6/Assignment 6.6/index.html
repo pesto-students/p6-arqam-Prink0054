@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignemnt 6.6</title>
+</head>
+<body>
+
+<script>
+
+function solution(arr, x)
+{
+     
+    let closestSum = Number.MAX_VALUE;
+ 
+    for(let i = 0; i < arr.length ; i++)
+    {
+        for(let j =i + 1; j < arr.length; j++)
+        {
+            for(let k =j + 1; k < arr.length; k++)
+            {
+                 
+                if (Math.abs(x - closestSum) >
+                    Math.abs(x - (arr[i] + arr[j] + arr[k])))
+                    closestSum = (arr[i] + arr[j] + arr[k]);
+            }
+        }
+    }
+     
+    return closestSum;
+}
+ 
+let arr = [ -1, 2, 1, -4 ];
+let x = 1;
+ 
+document.write(solution(arr, x));
+
+</script>
+    
+</body>
+</html>

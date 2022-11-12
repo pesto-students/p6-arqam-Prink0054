@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignemnt 6.5</title>
+</head>
+<body>
+
+<script>
+
+function findPair(arr, size, n) {
+           // Initialize positions of two elements
+           let i = 0;
+           let j = 1;
+ 
+           // Search for a pair
+           while (i < size && j < size) {
+               if (i != j && arr[j] - arr[i] == n) {
+                   document.write("Pair Found: (" + arr[i] + ":" +
+                   arr[j] + ")");
+                   return true;
+               }
+               else if (arr[j] - arr[i] < n)
+                   j++;
+               else
+                   i++;
+           }
+ 
+           document.write("No such pair");
+           return false;
+       }
+ 
+ 
+       let arr = [1, 8, 30, 40, 100];
+       let size = arr.length;
+       let n = 60;
+       findPair(arr, size, n);
+</script>
+    
+</body>
+</html>
